@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:food_menu/components/category_button.dart';
 import 'package:food_menu/components/food_card.dart';
+import 'package:food_menu/model/menu_item.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -82,6 +85,25 @@ const String jsonData = '''
     ]
   }
 ''';
+
+String selectedCategory = 'all';
+
+List<MenuItem> getMenuItems(String category) {
+  Map<String, dynamic> data = jsonDecode(jsonData);
+  if (category == 'all') {
+    // combine all categories into one list
+    List<MenuItem> allItems = [];
+    data.forEach((key, value) {
+      allItems.addAll(
+          (value as List).map((item) => MenuItem.fromJson(item)).toList());
+    });
+    return allItems;
+  } else {
+    return (data[category] as List)
+        .map((item) => MenuItem.fromJson(item))
+        .toList();
+  }
+}
 
 class _MenuPageState extends State<MenuPage> {
   @override
