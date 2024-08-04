@@ -63,16 +63,16 @@ class _MenuPageState extends State<MenuPage> {
       "image": "assets/images/oreo_dream.jpeg"
     },
     {
-      "name": "Quarantine Buddy",
-      "price": "16.99",
-      "description": "A comforting blend of flavors to keep you company, with hints of vanilla and chocolate.",
-      "image": "assets/images/quarantine_buddy.jpeg"
-    },
-    {
       "name": "Godzilla Milkshake",
       "price": "6.99",
       "description": "An enormous milkshake packed with flavors and topped with whipped cream and cherries.",
       "image": "assets/images/godzilla_milkshake.jpeg"
+    },
+    {
+      "name": "Quarantine Buddy",
+      "price": "16.99",
+      "description": "A comforting blend of flavors to keep you company, with hints of vanilla and chocolate.",
+      "image": "assets/images/quarantine_buddy.jpeg"
     }
   ]
 }
@@ -139,19 +139,35 @@ class _MenuPageState extends State<MenuPage> {
                 children: [
                   CategoryButton(
                     title: 'All',
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        selectedCategory = 'all';
+                      });
+                    },
                   ),
                   CategoryButton(
                     title: 'Breakfast',
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        selectedCategory = 'breakfast';
+                      });
+                    },
                   ),
                   CategoryButton(
                     title: 'Lunch',
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        selectedCategory = 'lunch';
+                      });
+                    },
                   ),
                   CategoryButton(
                     title: 'Shakes',
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        selectedCategory = 'drinks';
+                      });
+                    },
                   ),
                 ],
               ),
