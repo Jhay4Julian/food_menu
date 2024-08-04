@@ -1,18 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:food_menu/model/menu_item.dart';
 
 class FoodCard extends StatelessWidget {
-  final String imagePath;
-  final String name;
-  final String price;
-  final String description;
-
-  const FoodCard({
-    super.key,
-    required this.imagePath,
-    required this.name,
-    required this.price,
-    required this.description,
-  });
+  final MenuItem menuItem;
+  const FoodCard({super.key, required this.menuItem});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +26,7 @@ class FoodCard extends StatelessWidget {
             height: 200,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(imagePath),
+                image: AssetImage(menuItem.image),
                 fit: BoxFit.cover,
               ),
               borderRadius: const BorderRadius.only(
@@ -50,7 +41,7 @@ class FoodCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  name,
+                  menuItem.name,
                   style: const TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 20,
@@ -70,7 +61,7 @@ class FoodCard extends StatelessWidget {
                       vertical: 2,
                     ),
                     child: Text(
-                      '\$$price',
+                      '\$${menuItem.price}',
                       style: const TextStyle(
                         color: Colors.white,
                         letterSpacing: 1,
@@ -85,7 +76,7 @@ class FoodCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
             child: Text(
-              description,
+              menuItem.description,
               style: const TextStyle(fontSize: 16),
             ),
           ),
